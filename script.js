@@ -14,6 +14,7 @@ function saveFile(){
     const name = nameElement.replace(/ /g, "_") || "Unknown_Contact";
     const imagePath = "IMG_0887.jpeg";
     const avatar = getImageBase64(imagePath);
+    const chunkedBase64 = avatar.match(/.{1,76}/g).join("\r\n ");
      const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
@@ -26,7 +27,7 @@ TEL;TYPE=VIBER:09633621187
 TEL;TYPE=WHATSAPP:09633621187
 EMAIL:eyr.addleman@gmail.com
 ADR;TYPE=HOME:;;Street Address;City;Province;Postal Code;Philippines
-PHOTO;ENCODING=b;TYPE=PNG:${avatar}
+PHOTO;ENCODING=b;TYPE=JPEG:${chunkedBase64}
 END:VCARD
   `.trim();
 
@@ -43,21 +44,19 @@ END:VCARD
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
 }
-async function getImageBase64(path) {
-  const response = await fetch(path);
-  const blob = await response.blob();
-  
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      // Remove the "data:image/jpeg;base64," prefix
-      const base64String = reader.result.split(',')[1];
-      resolve(base64String);
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(blob);
-  });
+function getImageBase64(path) {
+    return new Promise((resolve, reject) => {
+        fetch(path)
+            .then(res => res.blob())
+            .then(blob => {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    const base64String = reader.result.split(',')[1]; // remove data:image/...;base64,
+                    resolve(base64String);
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+            })
+            .catch(reject);
+    });
 }
-
-    // alert("Contact saved!");
-// }
