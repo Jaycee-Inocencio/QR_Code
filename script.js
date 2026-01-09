@@ -51,7 +51,7 @@ function getImageBase64(path) {
             .then(blob => {
                 const reader = new FileReader();
                 reader.onloadend = () => {
-                    const base64String = reader.result.split(',')[1]; // remove data:image/...;base64,
+                    const base64String = reader.result.split(',')[1];
                     resolve(base64String);
                 };
                 reader.onerror = reject;
