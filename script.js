@@ -12,7 +12,7 @@ function saveContact(){
 function saveFile(){
     const nameElement =  document.getElementsByClassName("name")[0].textContent;
     const name = nameElement.replace(/ /g, "_") || "Unknown_Contact";
-    const imagePath = "IMG_0887.png";
+    const imagePath = "IMG_0887.jpeg";
     const avatar = getImageBase64(imagePath);
      const vCardData = `
 BEGIN:VCARD
