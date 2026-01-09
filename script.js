@@ -11,8 +11,8 @@ function saveContact(){
 }
 function saveFile(){
     const nameElement =  document.getElementsByClassName("name")[0].textContent;
-    const name = nameElement.replace(" ", "_") || "Unknown_Contact";
-      const vCardData = `
+    const name = nameElement.replace(/ /g, "_") || "Unknown_Contact";
+    const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
 N:Villafuerte;Erick;Yosorez;;;
