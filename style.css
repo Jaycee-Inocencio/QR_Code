@@ -305,7 +305,7 @@
         .avatar{
             position:relative;
             object-fit: cover;
-            border: 5px dotted #fff;
+            border: 3px dotted #fff;
             border-radius: 50%;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
             z-index: 1;
@@ -320,6 +320,8 @@
             border: none;
             border-radius: 8px;
             font-weight: 600;
+            font-size: 1rem;
+            font-family: Comicsans MS, cursive, sans-serif;
             cursor: pointer;
             transition: background-color 0.3s ease;
             /* margin-left: auto;
