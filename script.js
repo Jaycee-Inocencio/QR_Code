@@ -12,7 +12,9 @@ function saveContact(){
 function saveFile(){
     const nameElement =  document.getElementsByClassName("name")[0].textContent;
     const name = nameElement.replace(/ /g, "_") || "Unknown_Contact";
-    const vCardData = `
+    const imagePath = "IMG_0887.png";
+    const avatar = getImageBase64(imagePath);
+     const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
 N:Villafuerte;Erick;Yosorez;;;
@@ -24,6 +26,7 @@ TEL;TYPE=VIBER:09633621187
 TEL;TYPE=WHATSAPP:09633621187
 EMAIL:eyr.addleman@gmail.com
 ADR;TYPE=HOME:;;Street Address;City;Province;Postal Code;Philippines
+PHOTO;ENCODING=b;TYPE=PNG:${avatar}
 END:VCARD
   `.trim();
 
@@ -40,5 +43,21 @@ END:VCARD
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
 }
+async function getImageBase64(path) {
+  const response = await fetch(path);
+  const blob = await response.blob();
+  
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      // Remove the "data:image/jpeg;base64," prefix
+      const base64String = reader.result.split(',')[1];
+      resolve(base64String);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
     // alert("Contact saved!");
 // }
