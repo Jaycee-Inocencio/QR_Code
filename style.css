@@ -50,7 +50,7 @@
             height: 225px;
             transform: translateY(-240px);
             margin-left: -200px;
-            opacity: 0.75;
+            opacity: 0.5m;
             z-index: 0;
         }
         
@@ -69,6 +69,7 @@
             font-size: 1.2rem;
             opacity: 0.9;
             font-weight: 500;
+            text-shadow: #222 1px 1px 2px;
             z-index: 1;
         }
         
