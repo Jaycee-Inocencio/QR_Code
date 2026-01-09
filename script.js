@@ -10,7 +10,7 @@ function saveContact(){
     }, 2000);
 }
 function saveFile(){
-    const nameElement =  document.getElementsByClassName("name")[0].value;
+    const nameElement =  document.getElementsByClassName("name")[0].textContent;
     const name = nameElement.replace(" ", "_") || "Unknown_Contact";
       const vCardData = `
 BEGIN:VCARD
