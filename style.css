@@ -147,6 +147,10 @@
             color: #222;
             word-break: break-word;
         }
+        a{
+            color: #222;
+            text-decoration: none;
+        }
         
         .team-section, .lead-section {
             background-color: #f9fbfe;
