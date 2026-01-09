@@ -10,11 +10,13 @@ function saveContact(){
     }, 2000);
 }
 function saveFile(){
+    const nameElement =  document.getElementsByClassName("name")[0].value;
+    const name = nameElement.replace(" ", "_") || "Unknown_Contact";
       const vCardData = `
 BEGIN:VCARD
 VERSION:3.0
 N:Villafuerte;Erick;Yosorez;;;
-FN:Erick Yosorez Villafuerte
+FN:${name}
 TITLE:HR Specialist
 ORG:Addleman
 TEL;TYPE=CELL:09633621187
@@ -30,7 +32,7 @@ END:VCARD
 
   const link = document.createElement("a");
   link.href = url;
-  link.download = "Erick_Yosorez_Villafuerte.vcf";
+  link.download = `${name}.vcf`;
 
   document.body.appendChild(link);
   link.click();
