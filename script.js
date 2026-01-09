@@ -21,7 +21,7 @@ TEL;TYPE=CELL:09633621187
 TEL;TYPE=VIBER:09633621187
 TEL;TYPE=WHATSAPP:09633621187
 EMAIL:eyr.addleman@gmail.com
-ADR;TYPE=WORK:;;Street Address;City;Province;Postal Code;Philippines
+ADR;TYPE=HOME:;;123 Sampaguita Street;Quezon City;Metro Manila;1100;Philippines
 END:VCARD
   `.trim();
 
